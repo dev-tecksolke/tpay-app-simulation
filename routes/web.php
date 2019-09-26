@@ -11,10 +11,25 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Make Requests
+Route::group([
+	'prefix' => 'tests',
+], function () {
+	Route::post('c2b', 'HomeController@c2b')->name('c2b');
+	Route::post('b2c', 'HomeController@b2c')->name('b2c');
+});
+
+//logs
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+

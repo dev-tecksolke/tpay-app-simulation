@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
+namespace App\BaseAPI;
+
+
 use App\TPayDeposit;
 use App\TPayWithDraw;
 use Illuminate\Http\Request;
 
-class T_PAY extends Controller {
+class T_PAY {
 	/**
 	 * Create an stk transaction
 	 * @param Request $request
@@ -29,7 +30,6 @@ class T_PAY extends Controller {
 				'referenceCode' => $request->input('referenceCode'),
 				'phone_number' => $request->input('phone_number'),
 				'user_id' => $request->user()->id,
-				'order_id' => $request->get('_id'),
 			]);
 		}
 	}
